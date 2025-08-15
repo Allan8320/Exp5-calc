@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Simple Calculator</title>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-image: url(calc.jpg);
+    }
+    .calc-container {
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        text-align: center;
+        width: 280px;
+    }
+    
+    input {
+        width: 90%;
+        padding: 8px;
+        margin: 8px 0;
+        border: 1px solid #3312f0;
+        border-radius: 5px;
+        font-size: 14px;
+        text-align: center;
+    }
+    .btn {
+        width: 45%;
+        padding: 10px;
+        margin: 5px;
+        border: none;
+        border-radius: 15px;
+        background-color: #58ff7c;
+        color: rgb(15, 10, 1);
+    }
+    .result {
+        color: rgb(255, 0, 170);
+        
+    }
+</style>
+</head>
+<body>
+
+<div class="calc-container">
+    <h3>Simple Calculator</h3>
+
+    <input type="number" id="num1" placeholder="Enter first number"><br>
+    <input type="number" id="num2" placeholder="Enter second number"><br>
+
+    <button class="btn" onclick="calculate('+')">+</button>
+    <button class="btn" onclick="calculate('-')">-</button><br>
+    <button class="btn" onclick="calculate('*')">x</button>
+    <button class="btn" onclick="calculate('/')">/</button>
+
+    <div id="result" class="result"></div>
+</div>
+
+<script>
+function calculate(op) {
+    let n1 = parseFloat(document.getElementById("num1").value);
+    let n2 = parseFloat(document.getElementById("num2").value);
+
+    if (isNaN(n1) || isNaN(n2)) {
+        document.getElementById("result").innerHTML = "Invalid Input";
+        return;
+    }
+
+    let res = 0;
+    switch(op) {
+        case '+': res = n1 + n2; break;
+        case '-': res = n1 - n2; break;
+        case '*': res = n1 * n2; break;
+        case '/': res = n2 !== 0 ? (n1 / n2) : "Error (divide by 0)"; break;
+    }
+
+    document.getElementById("result").innerHTML = "Result: " + res;
+}
+</script>
+
+</body>
+</html>
